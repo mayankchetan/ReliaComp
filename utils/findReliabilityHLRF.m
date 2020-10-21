@@ -1,4 +1,4 @@
-function rel = findReliability(app)
+function rel = findReliabilityHLRF(app)
 % function to calculate the reliability
 % *************************************************************************
 % *Initially created by Mayank Chetan as a Part of MECH6338 Course at UTD *
@@ -66,21 +66,21 @@ function rel = findReliability(app)
 % [1] Haldar, Achintya, and Sankaran Mahadevan. Reliability assessment 
 %     using stochastic finite element analysis. John Wiley & Sons, 2000.
 %**************************************************************************
-i=1;
+idx=1;
 
 model = app.DataStruct.model;
 
 % finding reliability based on MVFOSM assuming Uncorrelated Normal Dist
-rel(i) = MVFSOM(model);
+rel(idx) = MVFSOM(model);
 
 % running the HL-RF method until beta reaches convergence and i<=10,000
-while i==1 || (rel(i).BDelta >= model.BetaDiff && i<=10000)
+while idx==1 || (rel(idx).BDelta >= model.BetaDiff && idx<=10000)
    
     % Calling the HLRF algo
     rel = HLRFAlgo(model,rel,app);
     
     % Incrementing the iteration counter.
-    i=i+1;
+    idx=idx+1;
 end
        
 end

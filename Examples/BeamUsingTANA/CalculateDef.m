@@ -1,5 +1,5 @@
 function TotalDisp = CalculateDef(X)
-% Dunction to calculate the Deflection to blade tip
+% Function to calculate the Deflection to blade tip
 % ***********************************************************************
 % *    Created by Mayank Chetan as a Part of MECH6338 Course at UTD     *
 % ***********************************************************************
