@@ -1,5 +1,5 @@
-classdef ReliaCompGUI < matlab.apps.AppBase
-%***********************************************************************
+classdef ReliaCompGUI_exported < matlab.apps.AppBase
+% ***********************************************************************
 % Copyright (C) 2020  Mayank Chetan
 % 
 % This program is free software: you can redistribute it and/or modify
@@ -15,15 +15,6 @@ classdef ReliaCompGUI < matlab.apps.AppBase
 % You should have received a copy of the GNU General Public License
 % along with this program.  If not, see <https://www.gnu.org/licenses/>.
 % ***********************************************************************
-% This runs a Monte Carlo Simulations (MCS) approximation to find the
-% reliability related to the MECH6338 project. The function uses the
-% Cholesky decomposition method[1]. The functional approximation MAT file
-% obtained by running the "FitTANA.m" script is used here.
-%
-%
-% [1] Haldar, Achintya, and Sankaran Mahadevan. Reliability assessment
-%     using stochastic finite element analysis. John Wiley & Sons, 2000.
-%**************************************************************************
     % Properties that correspond to app components
     properties (Access = public)
         ReliaComp                       matlab.ui.Figure
@@ -901,7 +892,7 @@ classdef ReliaCompGUI < matlab.apps.AppBase
     methods (Access = public)
 
         % Construct app
-        function app = ReliaCompGUI
+        function app = ReliaCompGUI_exported
 
             % Create UIFigure and components
             createComponents(app)
