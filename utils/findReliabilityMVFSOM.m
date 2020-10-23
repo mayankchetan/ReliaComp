@@ -1,5 +1,5 @@
-function rel = findReliabilityHLRF(app)
-% function to calculate the reliability using HLRF
+function rel = findReliabilityMVFSOM(app)
+% function to calculate the reliability using MVFOSM
 % ***********************************************************************
 % Copyright (C) 2020  Mayank Chetan
 % 
@@ -15,7 +15,7 @@ function rel = findReliabilityHLRF(app)
 % 
 % You should have received a copy of the GNU General Public License
 % along with this program.  If not, see <https://www.gnu.org/licenses/>.
-% *************************************************************************
+% ************************************************************************
 %   This function calculates the reliability of the provided function using
 %   the MVFOSM methods for the first iteration assuming that the variables 
 %   are independent and normally distributed to obtain a Beta approx.
@@ -85,15 +85,5 @@ model = app.DataStruct.model;
 
 % finding reliability based on MVFOSM assuming Uncorrelated Normal Dist
 rel(idx) = MVFSOM(model);
-
-% running the HL-RF method until beta reaches convergence and i<=10,000
-while idx==1 || (rel(idx).BDelta >= model.BetaDiff && idx<=10000)
-   
-    % Calling the HLRF algo
-    rel = HLRFAlgo(model,rel,app);
-    
-    % Incrementing the iteration counter.
-    idx=idx+1;
-end
        
 end

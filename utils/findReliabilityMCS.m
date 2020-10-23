@@ -1,6 +1,20 @@
 function rel = findReliabilityMCS(app)
+% function to calculate the reliability using MCS
 % ***********************************************************************
-% *    Created by Mayank Chetan as a Part of MECH6338 Course at UTD     *
+% Copyright (C) 2020  Mayank Chetan
+% 
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <https://www.gnu.org/licenses/>.
 % ***********************************************************************
 % This runs a Monte Carlo Simulations (MCS) approximation to find the
 % reliability related to the MECH6338 project. The function uses the
@@ -28,20 +42,13 @@ model.L = chol(model.C,'lower');
 for idx = 1:model.MCSamples
     % Sampling the correlated non-normal random variables [1]
     % {X} = [L] * {y} + Mean(X)
+    
     sampleX = model.L * randn (length(model.varsMeans),1) + model.varsMeans;
     g(idx) = feval(model.funcName,sampleX);
     
-
-    
-    
-    if mod(idx,10000) == 0
+    if mod(idx,(model.MCSamples ./ 20)) == 0
         OutputString = sprintf("Finished %d samples of %d \n",idx,model.MCSamples);
         app.UpdateOutputWindow(OutputString,1)
-        if CheckKillSwitch(app)
-            OutputString = sprintf("Killing Simulation based on user request! \n");
-            app.UpdateOutputWindow(OutputString,1)
-            break;
-        end
     end
     
 end

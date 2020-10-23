@@ -1,7 +1,20 @@
 function [grad,val]=FindGrads(funcName,x,delta)
 % function to calculate the gradients for the function passed at point
 % ***********************************************************************
-% *    Created by Mayank Chetan as a Part of MECH6338 Course at UTD     *
+% Copyright (C) 2020  Mayank Chetan
+% 
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <https://www.gnu.org/licenses/>.
 % ***********************************************************************
 %   This function calculates the gradients for the passed function at the
 %   defined point using analytical or central difference method.
